@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clicon E-commerce Header & Hero (Bootstrap 5) - Phone Icon Fixed</title>
+    <!-- Bootstrap 5 CSS CDN --><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome 6.5.2 CDN (Social Media Icons) --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Google Font: Public Sans --><link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Custom Font and Basic Style */
+        body { font-family: 'Public Sans', sans-serif; }
+        .page-container { max-width: 1920px; margin: 0 auto; }
+
+        /* Fixing the Bootstrap container max-width and padding */
+        .ecom-container { 
+            max-width: 1320px; 
+            padding-left: 1rem; 
+            padding-right: 1rem; 
+            margin: 0 auto;
+        }
+
+        /* 1. Black Friday Bar */
+        .black-friday-bar {
+            background-color: #191C1F;
+            height: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Custom style for the skewed black label */
+        .black-label-skew {
+            background-color: #F3DE6D;
+            color: #191C1F;
+            font-size: 20px;
+            font-weight: 600;
+            padding: 6px 10px;
+            border-radius: 2px;
+            transform: rotate(-3deg);
+            display: inline-block;
+            white-space: nowrap;
+            /* Adjustments to prevent overlap on small screens */
+            margin-right: 10px; 
+            margin-top: 5px;
+        }
+
+        /* Custom close button style */
+        .close-btn-custom {
+            background-color: #303639;
+            color: white;
+            padding: 8px;
+            width: 32px;
+            height: 32px;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.8;
+            transition: all 0.2s;
+        }
+        .close-btn-custom:hover { opacity: 1; }
+
+        /* Custom SVG icon style */
+        .icon-svg {
+            stroke: currentColor;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 2. Top Info Bar */
+        .top-info-bar {
+            background-color: #1B6392;
+            box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.16);
+        }
+        
+        /* Font Awesome icons styling */
+        .social-icon {
+            color: white;
+            opacity: 0.75;
+            transition: opacity 0.2s;
+            cursor: pointer;
+        }
+        .social-icon:hover {
+            opacity: 1;
+        }
+
+        /* 3. Main Header Bar */
+        .main-header-bar {
+            background-color: #1B6392;
+        }
+        .search-input-group {
+            max-width: 630px;
+        }
+        .search-input {
+            border: none;
+            outline: none;
+            box-shadow: none;
+            color: #77878F;
+        }
+        
+        /* Hero section price tag */
+        .price-tag {
+            background-color: #2DA5F3;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            outline: 4px solid white;
+            color: white;
+            font-size: 22px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 56px;
+            right: 155px; /* Fixed positioning for large screens only */
+            
+        }
+        
+        /* Small Banner Top (Pixel 6 Pro) - Image Adjustment */
+        .small-banner-top {
+            background-color: #191C1F; /* Image 2's background color */
+            position: relative;
+            overflow: hidden;
+            border-radius: 6px;
+            height: 248px; /* Fixed height as per design */
+        }
+        
+        .small-banner-top .content {
+            position: absolute;
+            left: 40px;
+            top: 46px;
+            z-index: 1; /* Ensure content is above image */
+
+        }
+
+        .small-banner-top .product-image {
+            position: absolute;
+            /* Positioning based on the original image */
+            right: -25%; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            height: 120%; 
+            width: auto;
+            max-width: none; /* Override Bootstrap's max-width for img-fluid */
+            opacity: 0.9; 
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            /* Removing fixed padding on small screens */
+            .ecom-container { max-width: 100%; } 
+            
+            /* Fixing Black Friday bar overlap */
+            .black-friday-content {
+                padding: 0 15px; /* Reduced padding for smaller screens */
+            }
+            .black-label-skew, .friday-text {
+                position: static; /* Bringing to flow on small screens */
+                transform: none;
+                margin-top: 0;
+                margin-right: 0;
+            }
+            .discount-info, .shop-now-button, .close-button {
+                position: static; /* Bringing to flow */
+                margin-top: 5px;
+            }
+            .black-friday-bar {
+                height: auto; /* Supporting multi-line on small screens */
+                padding: 10px 0;
+            }
+            .price-tag {
+                right: 50px; /* Adjusting absolute position on small screens */
+                top: 20px;
+                width: 70px;
+                height: 70px;
+                font-size: 16px;
+            }
+            .small-banner-top .product-image {
+                right: -40%; /* Adjust for mobile screens */
+                height: 100%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="page-container">
+    <header class="w-100">
+
+        <!-- 1. Black Friday Top Banner (Using Bootstrap Flexbox & Grid) --><div class="black-friday-bar d-flex align-items-center">
+            <div class="ecom-container d-flex justify-content-between align-items-center w-100 flex-wrap">
+                <!-- Left Side: Black Friday Text --><div class="d-flex align-items-center col-12 col-lg-4 justify-content-center justify-content-lg-start mb-2 mb-lg-0">
+                    <span class="black-label-skew d-block">Black</span>
+                    <span class="friday-text text-white fw-bold fs-5 ms-2">Friday</span>
+                </div>
+                
+                <!-- Center: Discount Info --><div class="discount-info d-flex align-items-center col-12 col-lg-4 justify-content-center mb-2 mb-lg-0">
+                    <span class="text-white small fw-normal">Up to</span>
+                    <span class="text-warning display-6 fw-semibold lh-1">59%</span>
+                    <span class="text-white fs-5 fw-semibold">OFF</span>
+                </div>
+                
+                <!-- Right Side: Shop Now & Close Button --><div class="d-flex align-items-center col-12 col-lg-4 justify-content-center justify-content-lg-end">
+                    <a href="#" class="btn btn-warning rounded-1 d-flex align-items-center gap-2 px-4 py-2 me-2 shop-now-button fw-bold text-uppercase fs-6">
+                        Shop Now
+                        <svg class="icon-svg" style="width: 20px; height: 20px;" viewBox="0 0 20 20"><path d="M11.25 14.375L15.625 10L11.25 5.625M15.625 10H4.375"/></svg>
+                    </a>
+                    <button class="close-btn-custom border-0" aria-label="Close">
+                        <svg class="icon-svg" style="width: 16px; height: 16px;" viewBox="0 0 16 16"><path d="M12 4L4 12M4 4L12 12"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div> 
+
+        <!-- 2. Top Info Bar --><div class="top-info-bar py-3 d-none d-lg-block">
+            <div class="ecom-container d-flex justify-content-between align-items-center">
+                <p class="text-white small mb-0">Welcome to Clicon online eCommerce store.</p>
+                <div class="d-flex align-items-center gap-4 text-white small">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="fw-normal">Follow us:</span>
+                        <!-- Social Icons using Font Awesome --><div class="d-flex gap-3">
+                            <!-- Facebook Icon --><i class="fab fa-facebook-f social-icon"></i>
+                            <!-- Twitter Icon (now X) --><i class="fab fa-twitter social-icon"></i>
+                            <!-- Instagram Icon --><i class="fab fa-instagram social-icon"></i>
+                            <!-- YouTube Icon --><i class="fab fa-youtube social-icon"></i>
+                        </div>
+                    </div>
+                    <div class="vr bg-white opacity-25" style="height: 28px;"></div>
+                    <div class="dropdown">
+                        <a class="text-white text-decoration-none dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                            Eng
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Ban</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <a class="text-white text-decoration-none dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                            USD
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">BDT</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Main Header Bar (Logo, Search, Icons) --><div class="main-header-bar py-4">
+            <div class="ecom-container d-flex justify-content-between align-items-center flex-wrap">
+                <!-- Logo --><div class="logo text-white fs-3 fw-bold mb-3 mb-lg-0">CLICON</div>
+
+                <!-- Search Bar --><div class="search-input-group p-2 bg-white rounded-1 shadow-lg d-flex align-items-center flex-grow-1 mx-2 mx-lg-0">
+                    <input type="text" placeholder="Search for anything..." class="form-control search-input flex-grow-1" style="box-shadow: none;">
+                    <!-- Search Icon (SVG) --><svg class="icon-svg text-dark" style="width: 20px; height: 20px;" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                </div>
+
+                <!-- User Actions --><div class="d-flex align-items-center gap-3 gap-lg-4 text-white mt-3 mt-lg-0">
+                    <!-- Cart Icon (SVG) --><div class="position-relative" style="width: 32px; height: 32px;">
+                        <svg class="icon-svg w-100 h-100" viewBox="0 0 32 32">
+                            <!-- Shopping Cart Icon Path -->
+                            <path d="M8 6H28L25.3333 22H10.6667L8 6ZM10.6667 25.3333A1.33333 1.33333 0 1 0 10.6667 28A1.33333 1.33333 0 0 0 10.6667 25.3333ZM24 25.3333A1.33333 1.33333 0 1 0 24 28A1.33333 1.33333 0 0 0 24 25.3333Z"/>
+                        </svg>
+                        <!-- Cart Count (5) -->
+                        <div class="position-absolute top-0 start-100 translate-middle bg-white border border-2 border-[#1B6392] rounded-circle d-flex align-items-center justify-content-center text-[#1B6392] fw-bold small" style="width: 20px; height: 20px;">5</div>
+                    </div>
+                    <!-- Wishlist Icon (SVG) --><div style="width: 32px; height: 32px;">
+                        <svg class="icon-svg w-100 h-100" viewBox="0 0 32 32"><path d="M25.3334 8.66667C23.6667 6.66667 20.3334 6.66667 16.6667 9.33334C13 6.66667 9.66671 6.66667 8.00004 8.66667C5.33337 12 5.33337 15.3333 8.00004 18L16.6667 27.3333L25.3334 18C28.0001 15.3333 28.0001 12 25.3334 8.66667Z"/></svg>
+                    </div>
+                    <!-- Profile Icon (SVG) --><div style="width: 32px; height: 32px;">
+                        <svg class="icon-svg w-100 h-100" viewBox="0 0 32 32"><circle cx="16" cy="10" r="6"/><path d="M28.25 28.25C25.1326 23.3676 20.8997 20 16 20C11.1003 20 6.86744 23.3676 3.75 28.25"/></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Navigation Bar --><nav class="bg-white shadow-sm border-bottom py-3 d-none d-lg-block">
+            <div class="ecom-container d-flex justify-content-between align-items-center">
+                <!-- All Category Button --><button class="btn btn-light rounded-1 d-flex align-items-center gap-2 px-4 py-2 fw-medium">
+                    All Category
+                    <svg class="icon-svg text-dark" style="width: 16px; height: 16px;" viewBox="0 0 16 16"><path d="M4 6L8 10L12 6"/></svg>
+                </button>
+                
+                <!-- Nav Links --><div class="d-flex align-items-center gap-4 text-secondary small">
+                    <a href="#" class="d-flex align-items-center gap-2 text-decoration-none text-secondary">
+                        <svg class="icon-svg" style="width: 20px; height: 20px;" viewBox="0 0 24 24"><path d="M12 20V4M17 15L12 20L7 15"/></svg>
+                        Track Order
+                    </a>
+                    <a href="#" class="d-flex align-items-center gap-2 text-decoration-none text-secondary">
+                        <svg class="icon-svg" style="width: 20px; height: 20px;" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                        Compare
+                    </a>
+                    <a href="#" class="d-flex align-items-center gap-2 text-decoration-none text-secondary">
+                        <svg class="icon-svg" style="width: 20px; height: 20px;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM12 16c-1.1 0-2-.9-2-2v-4c0-1.1.9-2 2-2s2 .9 2 2v4c0 1.1-.9 2-2 2zM12 8h.01"/></svg>
+                        Customer Support
+                    </a>
+                    <a href="#" class="d-flex align-items-center gap-2 text-decoration-none text-secondary">
+                        <svg class="icon-svg" style="width: 20px; height: 20px;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14c-1.1 0-2-.9-2-2v-4c0-1.1.9-2 2-2s2 .9 2 2v4c0 1.1-.9 2-2 2zM12 8h.01"/></svg>
+                        Need Help
+                    </a>
+                </div>
+
+                <!-- Contact Info (With Correct Phone Icon) --><div class="d-flex align-items-center gap-2 text-dark fs-5 fw-normal">
+                    <svg class="icon-svg" style="width: 28px; height: 28px;" viewBox="0 0 24 24">
+                        <!-- Correct Phone Icon SVG Path -->
+                        <path d="M22 16.92v3a2 2 0 0 1-2 2A18 18 0 0 1 3 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2 1 1 0 0 1-.03 0C8.94 5.92 8.79 7.37 8.5 8.7A10.87 10.87 0 0 0 15.3 15.5c1.33-.29 2.78-.44 4.7-.5A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                    <span>+1-202-555-0104</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content (Hero Section and Features) --><main class="py-4 py-lg-5">
+        <div class="ecom-container">
+            <div class="row g-4 mb-4">
+                <!-- Large Hero Banner (Left) --><div class="col-lg-8">
+                    <div class="bg-light rounded-3 p-4 p-lg-5 position-relative overflow-hidden" style="height: 520px;">
+                        <div class="position-relative z-1 d-flex flex-column gap-3 gap-lg-4" style="padding-top: 80px;">
+                            <div class="d-flex align-items-center gap-2">
+                                <div class="border-top border-2 border-info" style="width: 24px;"></div>
+                                <span class="text-info fw-semibold small text-uppercase">THE BEST PLACE TO PLAY</span>
+                            </div>
+                            <h1 class="text-dark fw-semibold display-5" style="max-width: 356px;">Xbox Consoles</h1>
+                            <p class="text-secondary fs-6" style="max-width: 356px;">Save up to 50% on select Xbox games. Get 3 months of PC Game Pass for $2 USD.</p>
+                            <a href="#" class="btn btn-warning rounded-2 px-3 py-2 fw-bold text-uppercase w-auto d-flex align-items-center gap-2 text-white" style="background-color: #FA8232;">
+                                Shop Now
+                                <svg class="icon-svg text-white" style="width: 20px; height: 20px; max-width: fit-content;" viewBox="0 0 20 20"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                        
+                        <!-- Image Placeholder (Right) --><img src="image 5.png" alt="Xbox Console" class="img-fluid position-absolute d-none d-lg-block" style="right: 56px; top: 56px; max-width: 368px; max-height: 408px;">
+                        
+                        <!-- Price Tag --><div class="price-tag d-none d-lg-flex">
+                            $299
+                        </div>
+                        
+                        <!-- Carousel Dots --><div class="position-absolute bottom-0 start-0 p-4 p-lg-5 d-flex gap-2">
+                            <div class="bg-dark rounded-circle" style="width: 10px; height: 10px;"></div>
+                            <div class="bg-secondary rounded-circle" style="width: 10px; height: 10px; opacity: 0.5;"></div>
+                            <div class="bg-secondary rounded-circle" style="width: 10px; height: 10px; opacity: 0.5;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Small Banners (Right) --><div class="col-lg-4">
+                    <div class="d-flex flex-column gap-4">
+                        <!-- Top Small Banner (Pixel 6 Pro) --><div class="small-banner-top rounded-3">
+                            <!-- Discount Badge --><span class="position-absolute top-0 end-0 m-4 bg-warning rounded-1 px-3 py-1 fw-semibold text-dark z-2">29% OFF</span>
+                            
+                            <div class="content d-flex flex-column gap-3 pt-3">
+                                <span class="text-warning small fw-medium text-uppercase">Summer Sales</span>
+                                <h2 class="text-white fs-4 fw-semibold" style="max-width: 160px;">New Google Pixel 6 Pro</h2>
+                                <a href="#" class="btn btn-warning rounded-1 px-3 py-2 fw-bold text-uppercase w-auto d-flex align-items-center text-white" style="background-color: #FA8232; font-size: 14px;">
+                                    Shop Now
+                                    <svg class="icon-svg text-white" style="width: 24px; height: 24px;" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                            
+                            <!-- Image Placeholder (Fixed as per Image 2) --><img src="image 5.png" alt="Google Pixel 6 Pro" class="product-image img-fluid d-none d-lg-block">
+                        </div>
+
+                        <!-- Bottom Small Banner (FlipBuds Pro) --><div class="bg-light rounded-3 p-4 d-flex align-items-center justify-content-center gap-3" style="height: 248px;">
+                            <!-- Image Placeholder --><img src="assets/image copy.png" alt="Xiaomi FlipBuds Pro" class="img-fluid" style="width: 160px; height: 160px;">
+                            
+                            <div class="d-flex flex-column gap-3">
+                                <h2 class="text-dark fs-4 fw-semibold">Xiaomi FlipBuds Pro</h2>
+                                <span class="text-info fs-5 fw-semibold">$299 USD</span>
+                                <a href="#" class="btn btn-warning rounded-1 px-3 py-2 fw-bold text-uppercase w-auto d-flex align-items-center gap-2 text-white" style="background-color: #FA8232; font-size: 14px;">
+                                    Shop Now
+                                    <svg class="icon-svg text-white" style="width: 20px; height: 20px;" viewBox="0 0 24 12"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Service Feature Bar --><div class="bg-white rounded-3 border border-light-subtle p-3 p-lg-4 d-flex justify-content-around align-items-center flex-wrap gap-3">
+                
+                <!-- Feature Item 1 --><div class="d-flex align-items-center gap-3 py-2">
+                    <div class="bg-light rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                        <svg class="icon-svg text-dark" style="width: 24px; height: 24px;" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-dark small fw-semibold text-uppercase mb-0">Fasted Delivery</h3>
+                        <p class="text-secondary small mb-0">Delivery in 24/H</p>
+                    </div>
+                </div>
+                <div class="vr bg-light d-none d-lg-block" style="height: 56px;"></div>
+
+                <!-- Feature Item 2 --><div class="d-flex align-items-center gap-3 py-2">
+                    <div class="bg-light rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                        <svg class="icon-svg text-dark" style="width: 24px; height: 24px;" viewBox="0 0 24 24"><path d="M21 12H3M14 5l7 7-7 7"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-dark small fw-semibold text-uppercase mb-0">24 Hours Return</h3>
+                        <p class="text-secondary small mb-0">100% money-back guarantee</p>
+                    </div>
+                </div>
+                <div class="vr bg-light d-none d-lg-block" style="height: 56px;"></div>
+
+                <!-- Feature Item 3 --><div class="d-flex align-items-center gap-3 py-2">
+                    <div class="bg-light rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                        <svg class="icon-svg text-dark" style="width: 24px; height: 24px;" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-dark small fw-semibold text-uppercase mb-0">Secure Payment</h3>
+                        <p class="text-secondary small mb-0">Your money is safe</p>
+                    </div>
+                </div>
+                <div class="vr bg-light d-none d-lg-block" style="height: 56px;"></div>
+
+                <!-- Feature Item 4 --><div class="d-flex align-items-center gap-3 py-2">
+                    <div class="bg-light rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                        <svg class="icon-svg text-dark" style="width: 24px; height: 24px;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14c-1.1 0-2-.9-2-2v-4c0-1.1.9-2 2-2s2 .9 2 2v4c0 1.1-.9 2-2 2zM12 8h.01"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-dark small fw-semibold text-uppercase mb-0">Support 24/7</h3>
+                        <p class="text-secondary small mb-0">Live contact/message</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- Bootstrap JS Bundle --><script src="assets/image copy.png"></script>
+
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Deals E-commerce Section</title>
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome 6.5.2 CDN (Social Media Icons & Star Ratings) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Google Font: Public Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Custom Font and Basic Styles */
+        body { font-family: 'Public Sans', sans-serif; background-color: #F2F4F5; padding: 20px; }
+        
+        /* Fixing maximum container width */
+        .ecom-container { 
+            max-width: 1320px; 
+            padding-left: 1rem; 
+            padding-right: 1rem; 
+            margin: 0 auto;
+        }
+
+        /* Deal Product Card Styles */
+        .product-card {
+            border: 1px solid #E4E7E9;
+            transition: box-shadow 0.2s, transform 0.2s;
+            position: relative;
+            border-radius: 0.5rem; /*Rounded corner added*/
+        }
+        .product-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+            border-color: #F3DE6D; /* Subtle highlight on hover */
+        }
+        
+        /* Badge Styles */
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 4px 8px;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 2px;
+            z-index: 10;
+        }
+        
+        /* Action Icon Styles (Wishlist, Compare) */
+        .card-actions {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .action-icon {
+            background-color: white;
+            border: 1px solid #E4E7E9;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.8;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .action-icon:hover {
+            opacity: 1;
+            border-color: #1B6392;
+            color: #1B6392;
+        }
+        
+        /* Price Styles */
+        .price-new { color: #FA8232; font-weight: 700; font-size: 1.1rem; }
+        .price-old { color: #77878F; text-decoration: line-through; font-size: 0.9rem; margin-left: 8px; }
+
+        /* Rating Star Styles */
+        .rating-stars { color: #FFC600; font-size: 14px; }
+        .rating-count { color: #77878F; font-size: 12px; margin-left: 4px; }
+        
+        /* Button Styles */
+        .btn-add-to-cart { background-color: #FA8232; border-color: #FA8232; color: white; }
+        .btn-add-to-cart:hover { background-color: #e3762d; border-color: #e3762d; color: white; }
+        .btn-secondary:disabled { opacity: 0.6; }
+
+        /* Deal Timer Styles */
+        #countdown-timer { 
+            background-color: #F3DE6D; 
+            padding: 4px 12px; 
+            border-radius: 4px; 
+            font-weight: 600; 
+            color: #191C1F;
+        }
+
+        /* SVG Icon Styles (if used) */
+        .icon-svg { stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; fill: none; width: 100%; height: 100%; }
+
+    </style>
+</head>
+<body>
+
+<div class="ecom-container">
+    <!-- Best Deals Section -->
+    <section class="mb-5">
+        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+            <div class="d-flex align-items-center gap-3">
+                <h2 class="text-dark fw-bold fs-3 mb-0">Best Deals</h2>
+                <!-- Deal Timer -->
+                <div id="countdown-timer" class="px-3 py-1 rounded-1 fw-semibold small d-flex align-items-center gap-2" style="font-size: 14px;">
+                    Deals ends in
+                    <span id="days">00</span>d :
+                    <span id="hours">00</span>h :
+                    <span id="minutes">00</span>m :
+                    <span id="seconds">00</span>s
+                </div>
+            </div>
+            <!-- Browse All Button -->
+            <a href="#" class="text-info text-decoration-none fw-medium d-flex align-items-center gap-1">
+                Browse All Product
+                <!-- Arrow Icon -->
+                <svg style="width: 16px; height: 16px;" viewBox="0 0 24 24" class="icon-svg text-info"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+        
+        <!-- Product Card Grid -->
+        <div class="row row-cols-2 row-cols-md-4 row-cols-lg-4 g-3 g-lg-4">
+            
+            <!-- Product Card 1: PS5 -->
+            <div class="col">
+                <div class="card product-card h-100 rounded-3 bg-white p-3">
+                    <!-- Badge and Action Buttons -->
+                    <span class="card-badge bg-warning text-dark">32% OFF</span>
+                    <span class="card-badge bg-danger text-white" style="top: 45px;">HOT</span>
+                    <div class="card-actions">
+                        <div class="action-icon text-dark"><i class="far fa-heart"></i></div>
+                        <div class="action-icon text-dark"><i class="fas fa-shopping-cart"></i></div>
+                    </div>
+                    <!-- Product Image -->
+                    <div class="text-center mb-3" style="height: 180px;">
+                        <img src="assets/image copy.png" alt="PS5 Console" class="img-fluid" style="max-height: 100%; object-fit: contain;">
+                    </div>
+                    <!-- Product Information -->
+                    <div class="card-body p-0">
+                        <div class="d-flex align-items-center mb-2">
+                            <!-- Rating -->
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="rating-count">(52,877)</span>
+                        </div>
+                        <p class="card-title fw-medium text-dark small mb-2" style="height: 40px; overflow: hidden;">Xbox Series S|5 SSD Console with Wireless Controller</p>
+                        <div class="d-flex align-items-baseline mb-2">
+                            <span class="price-new">$442.12</span>
+                            <span class="price-old">$899.00</span>
+                        </div>
+                        <button class="btn btn-add-to-cart rounded-1 px-3 py-2 fw-bold w-100 text-uppercase">ADD TO CART</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 2: Drone (Sold Out Example) -->
+            <div class="col">
+                <div class="card product-card h-100 rounded-3 bg-white p-3">
+                    <span class="card-badge bg-secondary text-white">SOLD OUT</span>
+                    <div class="card-actions">
+                        <div class="action-icon text-dark"><i class="far fa-heart"></i></div>
+                    </div>
+                    <div class="text-center mb-3" style="height: 180px;">
+                        <img src="assets/image copy.png" alt="Drone" class="img-fluid" style="max-height: 100%; object-fit: contain;">
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="d-flex align-items-center mb-2">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                            </div>
+                            <span class="rating-count">(1,123)</span>
+                        </div>
+                        <p class="card-title fw-medium text-dark small mb-2" style="height: 40px; overflow: hidden;">Rma Sport Earbuds - Wireless Earphones Bluetooth</p>
+                        <div class="d-flex align-items-baseline mb-2">
+                            <span class="price-new">$230.00</span>
+                        </div>
+                        <button class="btn btn-secondary rounded-1 px-3 py-2 fw-bold w-100 text-white" disabled>SOLD OUT</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 3: Smartphone -->
+            <div class="col">
+                <div class="card product-card h-100 rounded-3 bg-white p-3">
+                    <span class="card-badge bg-warning text-dark">19% OFF</span>
+                    <div class="card-actions">
+                        <div class="action-icon text-dark"><i class="far fa-heart"></i></div>
+                        <div class="action-icon text-dark"><i class="fas fa-shopping-cart"></i></div>
+                    </div>
+                    <div class="text-center mb-3" style="height: 180px;">
+                        <img src="assets/image copy.png" alt="Smartphone" class="img-fluid" style="max-height: 100%; object-fit: contain;">
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="d-flex align-items-center mb-2">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                            </div>
+                            <span class="rating-count">(9,012)</span>
+                        </div>
+                        <p class="card-title fw-medium text-dark small mb-2" style="height: 40px; overflow: hidden;">Simple Mobile 4G LTE Prepaid Smartphone</p>
+                        <div class="d-flex align-items-baseline mb-2">
+                            <span class="price-new">$220.00</span>
+                        </div>
+                        <button class="btn btn-add-to-cart rounded-1 px-3 py-2 fw-bold w-100 text-uppercase">ADD TO CART</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 4: Headphones -->
+            <div class="col">
+                <div class="card product-card h-100 rounded-3 bg-white p-3">
+                    <span class="card-badge bg-warning text-dark">19% OFF</span>
+                    <div class="card-actions">
+                        <div class="action-icon text-dark"><i class="far fa-heart"></i></div>
+                    </div>
+                    <div class="text-center mb-3" style="height: 180px;">
+                        <img src="assets/image copy.png" alt="Headphones" class="img-fluid" style="max-height: 100%; object-fit: contain;">
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="d-flex align-items-center mb-2">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i>
+                            </div>
+                            <span class="rating-count">(3,542)</span>
+                        </div>
+                        <p class="card-title fw-medium text-dark small mb-2" style="height: 40px; overflow: hidden;">Sony DSCHX80 High Zoom Point & Shoot Camera</p>
+                        <div class="d-flex align-items-baseline mb-2">
+                            <span class="price-new">$1,200</span>
+                            <span class="price-old">$1,500</span>
+                        </div>
+                        <button class="btn btn-add-to-cart rounded-1 px-3 py-2 fw-bold w-100 text-uppercase">ADD TO CART</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 5: Dell Optiplex (Bottom Row) -->
+            <div class="col">
+                <div class="card product-card h-100 rounded-3 bg-white p-3">
+                    <div class="card-actions">
+                        <div class="action-icon text-dark"><i class="far fa-heart"></i></div>
+                        <div class="action-icon text-dark"><i class="fas fa-shopping-cart"></i></div>
+                    </div>
+                    <div class="text-center mb-3" style="height: 180px;">
+                        <img src="assets/image copy.png" alt="Dell Optiplex" class="img-fluid" style="max-height: 100%; object-fit: contain;">
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="d-flex align-items-center mb-2">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-count">(9,991)</span>
+                        </div>
+                        <p class="card-title fw-medium text-dark small mb-2" style="height: 40px; overflow: hidden;">Dell Optiplex 7000 480 All in One Computer Monitor</p>
+                        <div class="d-flex align-items-baseline mb-2">
+                            <span class="price-new">$299</span>
+                        </div>
+                        <button class="btn btn-add-to-cart rounded-1 px-3 py-2 fw-bold w-100 text-uppercase">ADD TO CART</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 6: Drone (Small) -->
+            <div class="col">
+                <div class="card product-card h-100 rounded-3 bg-white p-3">
+                    <div class="card-actions">
+                        <div class="action-icon text-dark"><i class="far fa-heart"></i></div>
+                        <div class="action-icon text-dark"><i class="fas fa-shopping-cart"></i></div>
+                    </div>
+                    <div class="text-center mb-3" style="height: 180px;">
+                        <img src="assets/image copy.png" alt="Small Drone" class="img-fluid" style="max-height: 100%; object-fit: contain;">
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="d-flex align-items-center mb-2">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="rating-count">(4,102)</span>
+                        </div>
+                        <p class="card-title fw-medium text-dark small mb-2" style="height: 40px; overflow: hidden;">Portable Wishing Machines, 10lbs capacity Model</p>
+                        <div class="d-flex align-items-baseline mb-2">
+                            <span class="price-new">$70</span>
+                            <span class="price-old">$89.99</span>
+                        </div>
+                        <button class="btn btn-add-to-cart rounded-1 px-3 py-2 fw-bold w-100 text-uppercase">ADD TO CART</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product Card 7: PC Monitor -->
+            <div class="col">
+                <div class="card product-card h-100 rounded-3 bg-white p-3">
+                    <span class="card-badge bg-danger text-white">HOT</span>
+                    <div class="card-actions">
+                        <div class="action-icon text-dark"><i class="far fa-heart"></i></div>
+                        <div class="action-icon text-dark"><i class="fas fa-shopping-cart"></i></div>
+                    </div>
+                    <div class="text-center mb-3" style="height: 180px;">
+                        <img src="assets/image copy.png" alt="PC Monitor" class="img-fluid" style="max-height: 100%; object-fit: contain;">
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="d-flex align-items-center mb-2">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                            </div>
+                            <span class="rating-count">(2,305)</span>
+                        </div>
+                        <p class="card-title fw-medium text-dark small mb-2" style="height: 40px; overflow: hidden;">2 Barrel Carburetor Comb 2100 Engine Increase Horsepower</p>
+                        <div class="d-flex align-items-baseline mb-2">
+                            <span class="price-new">$160</span>
+                        </div>
+                        <button class="btn btn-add-to-cart rounded-1 px-3 py-2 fw-bold w-100 text-uppercase">ADD TO CART</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product Card 8: CCTV Camera -->
+            <div class="col">
+                <div class="card product-card h-100 rounded-3 bg-white p-3">
+                    <span class="card-badge bg-warning text-dark">31% OFF</span>
+                    <div class="card-actions">
+                        <div class="action-icon text-dark"><i class="far fa-heart"></i></div>
+                        <div class="action-icon text-dark"><i class="fas fa-shopping-cart"></i></div>
+                    </div>
+                    <div class="text-center mb-3" style="height: 180px;">
+                        <img src="assets/image copy.png" alt="CCTV Camera" class="img-fluid" style="max-height: 100%; object-fit: contain;">
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="d-flex align-items-center mb-2">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="rating-count">(7,890)</span>
+                        </div>
+                        <p class="card-title fw-medium text-dark small mb-2" style="height: 40px; overflow: hidden;">JBL FLIP 4 Waterproof Portable Bluetooth Speaker - Black</p>
+                        <div class="d-flex align-items-baseline mb-2">
+                            <span class="price-new">$250</span>
+                            <span class="price-old">$369.00</span>
+                        </div>
+                        <button class="btn btn-add-to-cart rounded-1 px-3 py-2 fw-bold w-100 text-uppercase">ADD TO CART</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div>
+
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Countdown Timer Script -->
+<script>
+    window.onload = function() {
+        // Set the deal end time: 2 days, 1 hour, 15 minutes, and 30 seconds from the current time. 
+        // You can change these values if needed.
+        const COUNTDOWN_DATE = new Date();
+        COUNTDOWN_DATE.setDate(COUNTDOWN_DATE.getDate() + 2); 
+        COUNTDOWN_DATE.setHours(COUNTDOWN_DATE.getHours() + 1);
+        COUNTDOWN_DATE.setMinutes(COUNTDOWN_DATE.getMinutes() + 15);
+        COUNTDOWN_DATE.setSeconds(COUNTDOWN_DATE.getSeconds() + 30);
+        
+        const timerElements = {
+            days: document.getElementById('days'),
+            hours: document.getElementById('hours'),
+            minutes: document.getElementById('minutes'),
+            seconds: document.getElementById('seconds')
+        };
+
+        const updateCountdown = () => {
+            const now = new Date().getTime();
+            const distance = COUNTDOWN_DATE - now;
+
+            if (distance < 0) {
+                clearInterval(interval);
+                const timerContainer = document.getElementById("countdown-timer");
+                if (timerContainer) {
+                    timerContainer.innerHTML = "DEAL EXPIRED!";
+                    timerContainer.classList.remove('bg-warning', 'text-dark');
+                    timerContainer.classList.add('bg-secondary', 'text-white');
+                }
+                return;
+            }
+
+            // Time Calculation
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display as 2 digits by padding with 0
+            const format = (num) => String(num).padStart(2, '0');
+
+            // Update UI
+            if (timerElements.days) timerElements.days.innerHTML = format(days);
+            if (timerElements.hours) timerElements.hours.innerHTML = format(hours);
+            if (timerElements.minutes) timerElements.minutes.innerHTML = format(minutes);
+            if (timerElements.seconds) timerElements.seconds.innerHTML = format(seconds);
+        };
+
+        // Update every second
+        const interval = setInterval(updateCountdown, 1000);
+        updateCountdown(); // Call once the page loads
+    };
+</script>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop with Categories Section</title>
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Font: Public Sans (Assumed from previous context) -->
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        
+        body { 
+            font-family: 'Public Sans', sans-serif; 
+            background-color: #F8F9FA;
+        }
+        .section-title {
+            color: #191C1F;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+
+        .category-card {
+            background-color: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            text-align: center;
+            height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            border: 1px solid #E6E8E9;
+            user-select: none;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-image-container {
+            width: 100%;
+            height: 70%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .category-image {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            transition: transform 0.3s;
+        }
+        
+        .category-card:hover .category-image {
+            transform: scale(1.05);
+        }
+
+        .category-name {
+            color: #191C1F;
+            font-size: 16px;
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .category-carousel-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-slider-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            gap: 24px;
+            padding-bottom: 20px;
+        }
+        
+        .category-slide {
+            flex: 0 0 auto;
+            width: calc((100% - (5 * 24px)) / 6);
+        }
+
+        @media (max-width: 1200px) {
+            .category-slide { width: calc((100% - (4 * 24px)) / 5); }
+        }
+        @media (max-width: 992px) {
+            .category-slide { width: calc((100% - (3 * 24px)) / 4); }
+        }
+        @media (max-width: 768px) {
+            .category-slide { width: calc((100% - (2 * 24px)) / 3); }
+        }
+        @media (max-width: 576px) {
+            .category-slide { width: calc((100% - 24px) / 2); }
+        }
+        
+        .slider-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #FA8232;
+            border: none;
+            color: white;
+            opacity: 0.9;
+            transition: opacity 0.2s, background-color 0.2s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-nav-btn:hover {
+            opacity: 1;
+            background-color: #e5762d;
+        }
+
+        #prevBtn {
+            left: -20px;
+        }
+
+        #nextBtn {
+            right: -20px;
+        }
+
+        .nav-icon {
+            stroke: currentColor;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+            width: 18px;
+            height: 18px;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- Category Section Start -->
+    <section class="py-5" style="background-color: #F8F9FA;">
+        <div class="container-xl" style="max-width: 1320px;">
+            <!-- Section Header -->
+            <div class="text-center">
+                <h2 class="section-title">Shop with Categories</h2>
+            </div>
+
+            <!-- Category Carousel Wrapper -->
+            <div class="category-carousel-wrapper px-4 px-md-5">
+                
+                <!-- Previous Button -->
+                <button class="slider-nav-btn d-none d-sm-flex" id="prevBtn" aria-label="Previous Category">
+                    <svg class="nav-icon" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                
+                <!-- Slider Track (Where the cards live) -->
+                <div class="category-slider-track" id="sliderTrack">
+                    
+                    <!-- Category Card 1: Computer & Laptop -->
+                    <div class="category-slide">
+                        <a href="#" class="text-decoration-none">
+                            <div class="category-card">
+                                <div class="category-image-container">
+                                    <img src="" 
+                                         alt="Computer & Laptop" 
+                                         class="category-image">
+                                </div>
+                                <span class="category-name">Computer & Laptop</span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Category Card 2: Smart Phone -->
+                    <div class="category-slide">
+                        <a href="#" class="text-decoration-none">
+                            <div class="category-card">
+                                <div class="category-image-container">
+                                    <img src="https://placehold.co/120x180/FFFFFF/191C1F?text=SMARTPHONE" 
+                                         alt="Smart Phone" 
+                                         class="category-image">
+                                </div>
+                                <span class="category-name">Smart Phone</span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Category Card 3: Headphones -->
+                    <div class="category-slide">
+                        <a href="#" class="text-decoration-none">
+                            <div class="category-card">
+                                <div class="category-image-container">
+                                    <img src="https://placehold.co/180x180/FFFFFF/191C1F?text=HEADPHONES" 
+                                         alt="Headphones" 
+                                         class="category-image">
+                                </div>
+                                <span class="category-name">Headphones</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Category Card 4: Accessories -->
+                    <div class="category-slide">
+                        <a href="#" class="text-decoration-none">
+                            <div class="category-card">
+                                <div class="category-image-container">
+                                    <img src="https://placehold.co/180x180/FFFFFF/191C1F?text=KEYBOARD" 
+                                         alt="Accessories" 
+                                         class="category-image">
+                                </div>
+                                <span class="category-name">Accessories</span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Category Card 5: Camera & Photo -->
+                    <div class="category-slide">
+                        <a href="#" class="text-decoration-none">
+                            <div class="category-card">
+                                <div class="category-image-container">
+                                    <img src="https://placehold.co/180x180/FFFFFF/191C1F?text=CAMERA" 
+                                         alt="Camera & Photo" 
+                                         class="category-image">
+                                </div>
+                                <span class="category-name">Camera & Photo</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Category Card 6: TV & Homes -->
+                    <div class="category-slide">
+                        <a href="#" class="text-decoration-none">
+                            <div class="category-card">
+                                <div class="category-image-container">
+                                    <img src="https://placehold.co/180x180/FFFFFF/191C1F?text=SMART+TV" 
+                                         alt="TV & Homes" 
+                                         class="category-image">
+                                </div>
+                                <span class="category-name">TV & Homes</span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Additional Cards for Scrolling Demo -->
+                    <div class="category-slide">
+                        <a href="#" class="text-decoration-none">
+                            <div class="category-card">
+                                <div class="category-image-container">
+                                    <img src="https://placehold.co/180x180/FFFFFF/191C1F?text=DRONE" 
+                                         alt="Drones & Gadgets" 
+                                         class="category-image">
+                                </div>
+                                <span class="category-name">Drones & Gadgets</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="category-slide">
+                        <a href="#" class="text-decoration-none">
+                            <div class="category-card">
+                                <div class="category-image-container">
+                                    <img src="https://placehold.co/180x180/FFFFFF/191C1F?text=WATCH" 
+                                         alt="Smart Watches" 
+                                         class="category-image">
+                                </div>
+                                <span class="category-name">Smart Watches</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="category-slide">
+                        <a href="#" class="text-decoration-none">
+                            <div class="category-card">
+                                <div class="category-image-container">
+                                    <img src="https://placehold.co/180x180/FFFFFF/191C1F?text=GAMING" 
+                                         alt="Gaming Console" 
+                                         class="category-image">
+                                </div>
+                                <span class="category-name">Gaming Console</span>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+                
+                <!-- Next Button -->
+                <button class="slider-nav-btn d-none d-sm-flex" id="nextBtn" aria-label="Next Category">
+                    <svg class="nav-icon" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- Category Section End -->
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript for Slider Functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.getElementById('sliderTrack');
+            const nextBtn = document.getElementById('nextBtn');
+            const prevBtn = document.getElementById('prevBtn');
+            const slideWidth = document.querySelector('.category-slide').offsetWidth + 24;
+            let currentScrollPosition = 0;
+            const scrollAmount = slideWidth * 3;
+
+            function updateButtonVisibility() {
+                const maxScroll = track.scrollWidth - track.clientWidth;
+                
+                if (currentScrollPosition <= 0) {
+                    prevBtn.disabled = true;
+                    prevBtn.style.opacity = 0.5;
+                } else {
+                    prevBtn.disabled = false;
+                    prevBtn.style.opacity = 1;
+                }
+
+                if (currentScrollPosition >= maxScroll) {
+                    nextBtn.disabled = true;
+                    nextBtn.style.opacity = 0.5;
+                } else {
+                    nextBtn.disabled = false;
+                    nextBtn.style.opacity = 1;
+                }
+            }
+
+            nextBtn.addEventListener('click', () => {
+                const maxScroll = track.scrollWidth - track.clientWidth;
+                currentScrollPosition += scrollAmount;
+                if (currentScrollPosition > maxScroll) {
+                    currentScrollPosition = maxScroll;
+                }
+                track.style.transform = `translateX(-${currentScrollPosition}px)`;
+                setTimeout(updateButtonVisibility, 500);
+            });
+
+            prevBtn.addEventListener('click', () => {
+                currentScrollPosition -= scrollAmount;
+                if (currentScrollPosition < 0) {
+                    currentScrollPosition = 0;
+                }
+                track.style.transform = `translateX(-${currentScrollPosition}px)`;
+                setTimeout(updateButtonVisibility, 500);
+            });
+
+            updateButtonVisibility();
+
+            window.addEventListener('resize', () => {
+                currentScrollPosition = 0;
+                track.style.transform = `translateX(0px)`;
+                updateButtonVisibility();
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Featured Products with Discount Banner</title>
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome 6.5.2 CDN (Icons & Star Ratings) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Google Font: Public Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* General Styles for the Section */
+        body { font-family: 'Public Sans', sans-serif; background-color: #F8F9FA; padding: 20px; }
+        .ecom-container { max-width: 1320px; margin: 0 auto; padding: 0 1rem; }
+        .section-title { color: #191C1F; font-size: 2rem; font-weight: 700; }
+        
+        /* Discount Banner Styles (The yellow-orange vertical section) */
+        .discount-banner {
+            background-color: #FA8232; /* Orange fallback */
+            background-image: linear-gradient(180deg, #F3DE6D 0%, #FA8232 100%);
+            border-radius: 0.5rem;
+            padding: 30px;
+            height: 100%;
+            min-height: 550px; /* Minimum height to match grid roughly */
+            position: relative;
+            overflow: hidden;
+            color: #191C1F;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .banner-text-top {
+            position: relative;
+            z-index: 10;
+        }
+        
+        .banner-image-collage {
+            position: absolute;
+            bottom: -50px; /* Adjust to hide the bottom slightly */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120%; /* To cover the area */
+            height: 60%;
+            opacity: 0.8;
+            z-index: 5;
+            object-fit: cover;
+        }
+
+        .banner-heading { font-size: 2.5rem; font-weight: 800; line-height: 1.1; }
+        
+        /* Product Card Styles (Reusing structure from best_deals_section.html for consistency) */
+        .product-card {
+            border: 1px solid #E4E7E9;
+            transition: box-shadow 0.2s, transform 0.2s;
+            position: relative;
+            border-radius: 0.5rem;
+        }
+        .product-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+            border-color: #FA8232; 
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 4px 8px;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 2px;
+            z-index: 10;
+        }
+
+        .card-actions {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            gap: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 20;
+        }
+        
+        .product-card:hover .card-actions {
+            opacity: 1;
+        }
+
+        .product-card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 0.5rem;
+            z-index: 15;
+        }
+
+        .product-card:hover .product-card-overlay {
+            opacity: 1;
+        }
+
+        .action-icon {
+            background-color: white;
+            border: 1px solid #E4E7E9;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .action-icon:hover {
+            background-color: #FA8232;
+            border-color: #FA8232;
+            color: white;
+        }
+        
+        /* Price, Rating and Button Styles */
+        .price-new { color: #FA8232; font-weight: 700; font-size: 1rem; }
+        .price-old { color: #77878F; text-decoration: line-through; font-size: 0.8rem; margin-left: 8px; }
+        .rating-stars { color: #FFC600; font-size: 12px; }
+        .rating-count { color: #77878F; font-size: 11px; margin-left: 4px; }
+        .btn-shop-now { background-color: #FA8232; border-color: #FA8232; color: white; transition: background-color 0.2s; }
+        .btn-shop-now:hover { background-color: #e3762d; border-color: #e3762d; color: white; }
+
+        .category-nav a { 
+            color: #77878F;
+            transition: color 0.2s;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 2px;
+        }
+        .category-nav a:hover, .category-nav a.active {
+            color: #FA8232;
+            border-bottom-color: #FA8232;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="ecom-container py-5">
+    <!-- Featured Products Section -->
+    <div class="row g-4">
+        
+        <!-- Left Column: Discount Banner -->
+        <div class="col-lg-4">
+            <div class="discount-banner">
+                <div class="banner-text-top">
+                    <p class="fw-bold text-uppercase mb-1" style="font-size: 1.1rem; color: #1B6392;">COMPUTER & ACCESSORIES</p>
+                    <h1 class="banner-heading my-2">32% Discount</h1>
+                    <p class="fs-6 fw-medium">For all electronics products</p>
+                    <p class="small fw-semibold mt-4">OFFERS ends in: <span class="text-danger">ENDS OF CHRISTMAS</span></p>
+                    
+                    <a href="#" class="btn btn-shop-now rounded-1 px-4 py-2 fw-bold mt-3 d-inline-flex align-items-center gap-2">
+                        SHOP NOW 
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-svg"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+
+                <!-- Placeholder for the device collage background image -->
+                <img src="https://placehold.co/800x600/FA8232/ffffff?text=DEVICES+COLLAGE+BACKGROUND" 
+                     alt="Computer and accessory collage" 
+                     class="banner-image-collage d-none d-md-block">
+            </div>
+        </div>
+
+        <!-- Right Column: Featured Products Grid -->
+        <div class="col-lg-8">
+            <div class="mb-4">
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                    <h2 class="section-title mb-0">Featured Products</h2>
+                    <a href="#" class="text-info text-decoration-none fw-medium d-flex align-items-center gap-1">
+                        Browse All Product
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-svg"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+                <!-- Category Tabs for the product grid -->
+                <div class="d-flex gap-3 mt-3 small fw-semibold category-nav flex-wrap">
+                    <a href="#" class="text-decoration-none active">All Product</a>
+                    <a href="#" class="text-decoration-none">Smart Phone</a>
+                    <a href="#" class="text-decoration-none">Laptop</a>
+                    <a href="#" class="text-decoration-none">Headphone</a>
+                    <a href="#" class="text-decoration-none">TV</a>
+                </div>
+            </div>
+
+            <!-- Product Grid (3 columns in lg, 2 in sm) -->
+            <div class="row row-cols-2 row-cols-md-3 g-3 g-lg-4">
+                
+                <!-- Product Card 1: Smartphone HOT -->
+                <div class="col">
+                    <div class="card product-card h-100 rounded-3 bg-white p-3">
+                        <span class="card-badge bg-danger text-white">HOT</span>
+                        <div class="product-card-overlay"></div>
+                        <div class="card-actions">
+                            <div class="action-icon text-dark"><i class="far fa-heart"></i></div>
+                            <div class="action-icon text-dark"><i class="fas fa-shopping-cart"></i></div>
+                        </div>
+                        
+                        <div class="text-center mb-3" style="height: 180px;">
+                            <img src="https://placehold.co/180x180/FFFFFF/191C1F?text=SMARTPHONE+A" alt="Smartphone" class="img-fluid" style="max-height: 100%; object-fit: contain;">
+                        </div>
+                        
+                        <div class="card-body p-0">
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="rating-stars">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i>
+                                </div>
+                                <span class="rating-count">(738)</span>
+                            </div>
+                            <p class="card-title fw-medium text-dark small mb-1" style="height: 36px; overflow: hidden;">TOZO T6 True Wireless Earbuds Bluetooth Headphones</p>
+                            <div class="d-flex align-items-baseline">
+                                <span class="price-new">$70</span>
+                                <span class="price-old">$89.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 2: Samsung Phone -->
+                <div class="col">
+                    <div class="card product-card h-100 rounded-3 bg-white p-3">
+                        <div class="product-card-overlay"></div>
+                        <div class="card-actions">
+                            <div class="action-icon text-dark"><i class="far fa-heart"></i></div>
+                            <div class="action-icon text-dark"><i class="fas fa-shopping-cart"></i></div>
+                        </div>
+                        
+                        <div class="text-center mb-3" style="height: 180px;">
+                            <img src="https://placehold.co/180x180/FFFFFF/191C1F?text=SMARTPHONE+B" alt="Samsung Smartphone" class="img-fluid" style="max-height: 100%; object-fit: contain;">
+                        </div>
+                        
+                        <div class="card-body p-0">
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="rating-stars">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <span class="rating-count">(949)</span>
+                            </div>
+                            <p class="card-title fw-medium text-dark small mb-1" style="height: 36px; overflow: hidden;">Samsung Electronics Samsung Galaxy S21 5G</p>
+                            <div class="d-flex align-items-baseline">
+                                <span class="price-new">$8,300</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product Card 3: AC BEST DEAL -->
+                <div class="col">
+                    <div class="card product-card h-100 rounded-3 bg-white p-3">
+                        <span class="card-badge bg-info text-white">BEST DEALS</span>
+                        <div class="product-card-overlay"></div>
+                        <div class="card-actions">
+                            <div class="action-icon text-dark"><i class="far fa-heart"></i></div>
+                            <div class="action-icon text-dark"><i class="fas fa-shopping-cart"></i></div>
+                        </div>
+                        
+                        <div class="text-center mb-3" style="height: 180px;">
+                            <img src="https://placehold.co/180x180/FFFFFF/191C1F?text=AIR+CONDITIONER" alt="AC Unit" class="img-fluid" style="max-height: 100%; object-fit: contain;">
+                        </div>
+                        
+                        <div class="card-body p-0">
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="rating-stars">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i>
+                                </div>
+                                <span class="rating-count">(420)</span>
+                            </div>
+                            <p class="card-title fw-medium text-dark small mb-1" style="height: 36px; overflow: hidden;">Amazon Basics High Speed HDMI Cable 18 Gbps, 4K/60Hz</p>
+                            <div class="d-flex align-items-baseline">
+                                <span class="price-new">$360</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 4: Headphones (Bottom Left) -->
+                <div class="col">
+                    <div class="card product-card h-100 rounded-3 bg-white p-3">
+                        <div class="product-card-overlay"></div>
+                        <div class="card-actions">
+                            <div class="action-icon text-dark"><i class="far fa-heart"></i></div>
+                            <div class="action-icon text-dark"><i class="fas fa-shopping-cart"></i></div>
+                        </div>
+                        
+                        <div class="text-center mb-3" style="height: 180px;">
+                            <img src="https://placehold.co/180x180/FFFFFF/191C1F?text=HEADPHONES" alt="Wired Headphones" class="img-fluid" style="max-height: 100%; object-fit: contain;">
+                        </div>
+                        
+                        <div class="card-body p-0">
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="rating-stars">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span class="rating-count">(641)</span>
+                            </div>
+                            <p class="card-title fw-medium text-dark small mb-1" style="height: 36px; overflow: hidden;">Wired Over-Ear Gaming Headphones with USB</p>
+                            <div class="d-flex align-items-baseline">
+                                <span class="price-new">$1,500</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 5: Tripod 25% OFF -->
+                <div class="col">
+                    <div class="card product-card h-100 rounded-3 bg-white p-3">
+                        <span class="card-badge bg-warning text-dark">25% OFF</span>
+                        <div class="product-card-overlay"></div>
+                        <div class="card-actions">
+                            <div class="action-icon text-dark"><i class="far fa-heart"></i></div>
+                            <div class="action-icon text-dark"><i class="fas fa-shopping-cart"></i></div>
+                        </div>
+                        
+                        <div class="text-center mb-3" style="height: 180px;">
+                            <img src="https://placehold.co/180x180/FFFFFF/191C1F?text=TRIPOD" alt="Tripod" class="img-fluid" style="max-height: 100%; object-fit: contain;">
+                        </div>
+                        
+                        <div class="card-body p-0">
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="rating-stars">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i>
+                                </div>
+                                <span class="rating-count">(977)</span>
+                            </div>
+                            <p class="card-title fw-medium text-dark small mb-1" style="height: 36px; overflow: hidden;">Polaroid 57-Inch Photo/Video Tripod with Deluxe Tripod Case</p>
+                            <div class="d-flex align-items-baseline">
+                                <span class="price-new">$1,200</span>
+                                <span class="price-old">$1,600</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 6: All-in-One Monitor -->
+                <div class="col">
+                    <div class="card product-card h-100 rounded-3 bg-white p-3">
+                        <span class="card-badge bg-success text-white">SALE</span>
+                        <div class="product-card-overlay"></div>
+                        <div class="card-actions">
+                            <div class="action-icon text-dark"><i class="far fa-heart"></i></div>
+                            <div class="action-icon text-dark"><i class="fas fa-shopping-cart"></i></div>
+                        </div>
+                        
+                        <div class="text-center mb-3" style="height: 180px;">
+                            <img src="https://placehold.co/180x180/FFFFFF/191C1F?text=MONITOR+AIO" alt="All-in-One Monitor" class="img-fluid" style="max-height: 100%; object-fit: contain;">
+                        </div>
+                        
+                        <div class="card-body p-0">
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="rating-stars">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i>
+                                </div>
+                                <span class="rating-count">(426)</span>
+                            </div>
+                            <p class="card-title fw-medium text-dark small mb-1" style="height: 36px; overflow: hidden;">Dell Optiplex 7000/7400 All-in-One Computer Monitor</p>
+                            <div class="d-flex align-items-baseline">
+                                <span class="price-new">$250</span>
+                                <span class="price-old">$280</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+               <!-- Product Card 7: All-in-One Monitor -->
+                        <div class="col">
+                    <div class="card product-card h-100 rounded-3 bg-white p-3">
+                        <span class="card-badge bg-warning text-dark">25% OFF</span>
+                        <div class="product-card-overlay"></div>
+                        <div class="card-actions">
+                            <div class="action-icon text-dark"><i class="far fa-heart"></i></div>
+                            <div class="action-icon text-dark"><i class="fas fa-shopping-cart"></i></div>
+                        </div>
+                        
+                        <div class="text-center mb-3" style="height: 180px;">
+                            <img src="https://placehold.co/180x180/FFFFFF/191C1F?text=TRIPOD" alt="Tripod" class="img-fluid" style="max-height: 100%; object-fit: contain;">
+                        </div>
+                        
+                        <div class="card-body p-0">
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="rating-stars">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i>
+                                </div>
+                                <span class="rating-count">(977)</span>
+                            </div>
+                            <p class="card-title fw-medium text-dark small mb-1" style="height: 36px; overflow: hidden;">Polaroid 57-Inch Photo/Video Tripod with Deluxe Tripod Case</p>
+                            <div class="d-flex align-items-baseline">
+                                <span class="price-new">$1,200</span>
+                                <span class="price-old">$1,600</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
